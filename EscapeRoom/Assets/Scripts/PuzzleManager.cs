@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PuzzleManager : MonoBehaviour
     public GameObject[] puzzleHolder1;
     public GameObject[] puzzleHolder2;
     public GameObject[] puzzleHolder3;
+    public UnityEvent winnerAction;
 
     private int greenCounter;
     private int redCounter;
@@ -18,7 +20,10 @@ public class PuzzleManager : MonoBehaviour
         if (puzzleHolder1[0].activeInHierarchy && puzzleHolder2[1].activeInHierarchy && puzzleHolder3[2].activeInHierarchy)
         {
             Debug.Log("You Win");
+            winnerAction.Invoke();
         }
+
+       
     }
 
 

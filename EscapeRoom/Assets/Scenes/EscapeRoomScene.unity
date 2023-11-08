@@ -164,6 +164,33 @@ MonoBehaviour:
   - {fileID: 1508388233}
   - {fileID: 46328130}
   - {fileID: 751743349}
+  winnerAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 67408184}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1154905014}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &6999888
 Transform:
   m_ObjectHideFlags: 0
@@ -348,6 +375,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 46328130}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &67408184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 192030, guid: 088b5f04d52a542ec975e88d7d9934f5, type: 3}
+  m_PrefabInstance: {fileID: 845977486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &83350551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1103,6 +1135,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6999887}
+        m_TargetAssemblyTypeName: PuzzleManager, Assembly-CSharp
+        m_MethodName: Winner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &313163529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1301,6 +1345,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6999887}
         m_TargetAssemblyTypeName: PuzzleManager, Assembly-CSharp
         m_MethodName: GreenATM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6999887}
+        m_TargetAssemblyTypeName: PuzzleManager, Assembly-CSharp
+        m_MethodName: Winner
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1560,6 +1616,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3763549876561535568, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3763549876561535569, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.5812263
@@ -1583,6 +1643,26 @@ PrefabInstance:
     - target: {fileID: 4825536089476507299, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.4265757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825536089476507299, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825536089476507299, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825536089476507299, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825536089476507299, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825536089476507300, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
+      propertyPath: field of view
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8595786699630856864, guid: 30d149b4c5c9edc4f86a9555d900a92d, type: 3}
       propertyPath: m_Name
@@ -3873,6 +3953,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135587233}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1154905014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 192030, guid: 088b5f04d52a542ec975e88d7d9934f5, type: 3}
+  m_PrefabInstance: {fileID: 582579084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1177507335 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409034, guid: a4c18952442944083b1fddc06ba477c2, type: 3}
@@ -7365,6 +7450,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6999887}
         m_TargetAssemblyTypeName: PuzzleManager, Assembly-CSharp
         m_MethodName: PinkATM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6999887}
+        m_TargetAssemblyTypeName: PuzzleManager, Assembly-CSharp
+        m_MethodName: Winner
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
