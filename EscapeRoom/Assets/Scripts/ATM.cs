@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class ATM : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject atmScreen;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enter the space");
+
+            
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Leave the space");
+        }
     }
+
+
 }
