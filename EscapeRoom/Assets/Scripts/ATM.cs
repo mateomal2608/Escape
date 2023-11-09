@@ -21,7 +21,7 @@ public class ATM : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enter the space");
-            LeanTween.scale(atmScreen, Vector3.one, 2).setEaseInBounce();
+            LeanTween.scale(atmScreen, Vector3.one, 2);
             
         }
 
