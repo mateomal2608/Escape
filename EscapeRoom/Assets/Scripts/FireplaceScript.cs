@@ -1,12 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FireplaceScript : MonoBehaviour
 {
     public GameObject fireplaceScreen;
+    public UnityEvent finalSound;
+    myControls inputActions;
 
+    private void Awake()
+    {
+        inputActions = new myControls();
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (inputActions.Player.ActionKey.WasPerformedThisFrame())
+            {
+                finalSound.Invoke();
+
+            }
+        }
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -27,7 +46,15 @@ public class FireplaceScript : MonoBehaviour
 
         }
     }
+    public void OnEnable()
+    {
+        inputActions.Player.Enable();
+    }
 
+    public void OnDisable()
+    {
+        inputActions.Player.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
-public class Hallway : MonoBehaviour
+public class HallPass : MonoBehaviour
 {
-
-    public UnityEvent soundAction;
-  
+    public ParticleSystem[] tourches;
+    public UnityEvent winnerAction;
 
     myControls inputActions;
+
 
     private void Awake()
     {
@@ -22,17 +23,24 @@ public class Hallway : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
-                soundAction.Invoke();
-                          
+                if (tourches[0].isStopped&& tourches[5].isStopped&& tourches[2].isStopped && tourches[3].isStopped)
+                {
+                    Debug.Log("Win");
+                    winnerAction.Invoke();
+                }
+                
+                   
+                
             }
         }
 
     }
 
+   
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -40,7 +48,6 @@ public class Hallway : MonoBehaviour
     {
         
     }
-
     public void OnEnable()
     {
         inputActions.Player.Enable();
@@ -50,4 +57,5 @@ public class Hallway : MonoBehaviour
     {
         inputActions.Player.Disable();
     }
+
 }
