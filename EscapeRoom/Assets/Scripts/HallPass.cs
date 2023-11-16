@@ -23,14 +23,14 @@ public class HallPass : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
-                if (tourches[0].isStopped&& tourches[5].isStopped&& tourches[2].isStopped && tourches[3].isStopped)
+                if (tourches[0].isStopped && tourches[5].isStopped && tourches[2].isStopped && tourches[3].isStopped)
                 {
                     Debug.Log("Win");
                     winnerAction.Invoke();
                 }
+              
                 
-                   
-                
+                             
             }
         }
 
