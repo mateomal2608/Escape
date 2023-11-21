@@ -8,6 +8,7 @@ public class HallPass : MonoBehaviour
 {
     public ParticleSystem[] tourches;
     public UnityEvent winnerAction;
+    public GameObject chestScreen;
 
     myControls inputActions;
 
@@ -29,14 +30,33 @@ public class HallPass : MonoBehaviour
                     winnerAction.Invoke();
                 }
               
-                
-                             
+                                          
             }
         }
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enter the space");
+            LeanTween.scale(chestScreen, Vector3.one, 2);
 
-   
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Leave the space");
+            LeanTween.scale(chestScreen, Vector3.zero, 2).setEaseInQuad();
+
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
