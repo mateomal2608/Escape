@@ -22,8 +22,7 @@ public class Hallway : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
-                soundAction.Invoke();
-                          
+                soundAction.Invoke();                         
             }
         }
 
