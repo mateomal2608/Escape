@@ -22,6 +22,7 @@ public class Hallway : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
+                Debug.Log("Enter the space");
                 soundAction.Invoke();                         
             }
         }
