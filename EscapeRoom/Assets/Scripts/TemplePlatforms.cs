@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class TemplePlatforms : MonoBehaviour
 {
     public UnityEvent soundAction;
-    public GameObject platform;
+    public GameObject[] platform;
     public int counter;
     public GameObject[] collidableObjects;
     public TMP_Text[] questions;
@@ -18,20 +18,71 @@ public class TemplePlatforms : MonoBehaviour
 
     public void FirstAns()
     {
+        counter++;
         
-        if(counter == 0)
+        if(counter == 1)
         {
             questions[0].gameObject.SetActive(false);
             questions[1].gameObject.SetActive(true);
             Debug.Log("Win");
 
         }
+        else if(counter==3)
+        {
+            questions[2].gameObject.SetActive(false);
+            questions[3].gameObject.SetActive(true);
+            Debug.Log("Win");
+        }
         else
         {
-            platform.SetActive(false);
+            platform[2].SetActive(false);
         }
 
     }
+
+    public void SecondAns()
+    {
+        counter++;
+
+        if (counter == 2)
+        {
+            questions[1].gameObject.SetActive(false);
+            questions[2].gameObject.SetActive(true);
+            Debug.Log("Win");
+
+        }
+        else
+        {
+            platform[1].SetActive(false);
+        }
+
+    }
+
+    public void fourthAns()
+    {
+        counter++;
+
+        if (counter == 4)
+        {
+            questions[3].gameObject.SetActive(false);
+            questions[4].gameObject.SetActive(true);
+            Debug.Log("Win");
+
+        }
+        else
+        {
+            platform[3].SetActive(false);
+        }
+
+    }
+
+    public void otherAns()
+    {
+        platform[0].SetActive(false);
+
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
