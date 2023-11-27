@@ -14,6 +14,10 @@ public class Timer : MonoBehaviour
 
     public UnityEvent gameOverEvent;
 
+    public GameObject player;
+
+   
+
 
     // Update is called once per frame
     void Update()
@@ -28,5 +32,11 @@ public class Timer : MonoBehaviour
             gameOverEvent.Invoke();
             displayTimeText.text = "Game Over, Try Again";
         }
+
+        
+      
     }
+
+
+
 }
