@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,37 +8,51 @@ using UnityEngine.Events;
 public class TemplePlatforms : MonoBehaviour
 {
     public UnityEvent soundAction;
-    private int counter;
     public GameObject platform;
+    public int counter;
+    public GameObject[] collidableObjects;
+    public TMP_Text[] questions;
+    private myControls inputActions;
+    public GameObject podiumScreen;
 
-    
 
-    myControls inputActions;
-
-    private void Awake()
+    public void FirstAns()
     {
-        inputActions = new myControls();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        
+        if(counter == 0)
         {
-            if (inputActions.Player.ActionKey.WasPerformedThisFrame()&& counter==0)
-            {
-                counter++;
-                Debug.Log("Win");
-                soundAction.Invoke();
-            }
-            else if(inputActions.Player.ActionKey.WasPerformedThisFrame() && counter != 0)
-            {
-                platform.SetActive(false);
-                
-            }
+            questions[0].gameObject.SetActive(false);
+            questions[1].gameObject.SetActive(true);
+            Debug.Log("Win");
+
+        }
+        else
+        {
+            platform.SetActive(false);
         }
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enter the space");
+            LeanTween.scale(podiumScreen, Vector3.one, 2);
+
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Leave the space");
+            LeanTween.scale(podiumScreen, Vector3.zero, 2).setEaseInQuad();
+
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -50,13 +65,5 @@ public class TemplePlatforms : MonoBehaviour
 
     }
 
-    public void OnEnable()
-    {
-        inputActions.Player.Enable();
-    }
-
-    public void OnDisable()
-    {
-        inputActions.Player.Disable();
-    }
+   
 }
