@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ public class HallPass : MonoBehaviour
     public ParticleSystem[] tourches;
     public UnityEvent winnerAction;
     public GameObject chestScreen;
+    public GameObject[] chest;
+    public TMP_Text[] instructions;
 
     myControls inputActions;
 
@@ -27,10 +30,23 @@ public class HallPass : MonoBehaviour
                 if (tourches[0].isStopped && tourches[5].isStopped && tourches[2].isStopped && tourches[3].isStopped)
                 {
                     Debug.Log("Win");
+                    chest[0].SetActive(false);
+                    chest[1].SetActive(true);
                     winnerAction.Invoke();
                 }
-              
-                                          
+                else
+                {
+                    instructions[0].gameObject.SetActive(false);
+                    instructions[1].gameObject.SetActive(true);
+
+                    foreach(ParticleSystem tourch in tourches)
+                    {
+                        tourch.Play();
+                        
+                    }
+                    
+                }
+                                                     
             }
         }
 

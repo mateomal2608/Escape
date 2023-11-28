@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +17,8 @@ public class MatchingGame : MonoBehaviour
     public int match = 0;
     private int pairs = 8;
     public bool finished=false;
-    
+    public TMP_Text[] text;
+
     myControls inputActions;
 
    
@@ -130,6 +132,8 @@ public class MatchingGame : MonoBehaviour
             {
                 if (match == pairs)
                 {
+                    text[0].gameObject.SetActive(false);
+                    text[1].gameObject.SetActive(true);
                     Debug.Log("Win");
                     finished = true;
                     soundAction.Invoke();

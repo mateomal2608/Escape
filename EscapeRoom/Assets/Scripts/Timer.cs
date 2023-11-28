@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     public TMP_Text displayTimeText;
 
-    private float currentTime=280;
+    public float currentTime=5;
 
     private float displayTime;
 

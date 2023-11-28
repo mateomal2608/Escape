@@ -27,7 +27,7 @@ public class WinControl : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
-                if(statues.GetComponent<MatchingGame>().finished==true && matching.GetComponent<TemplePlatforms>().finished==true)
+                if(matching.GetComponent<MatchingGame>().finished==true && statues.GetComponent<TemplePlatforms>().finished==true)
                 {
                     finalSound.Invoke();
                     instructions[0].gameObject.SetActive(false);
