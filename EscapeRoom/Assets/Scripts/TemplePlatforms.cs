@@ -14,6 +14,7 @@ public class TemplePlatforms : MonoBehaviour
     public TMP_Text[] questions;
     private myControls inputActions;
     public GameObject podiumScreen;
+    public bool finished=false;
 
 
     public void FirstAns()
@@ -66,6 +67,7 @@ public class TemplePlatforms : MonoBehaviour
         {
             questions[3].gameObject.SetActive(false);
             questions[4].gameObject.SetActive(true);
+            finished= true;
             Debug.Log("Win");
 
         }

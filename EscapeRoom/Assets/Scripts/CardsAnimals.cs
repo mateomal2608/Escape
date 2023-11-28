@@ -47,9 +47,6 @@ public class CardsAnimals : MonoBehaviour
 
         }
  
-        
-        
-
     }
 
     // Start is called before the first frame update

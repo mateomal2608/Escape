@@ -13,6 +13,9 @@ public class MatchingGame : MonoBehaviour
     public static System.Random rnd = new System.Random();
     private int shuffleNum = 0;
     int[] visibleFaces = { -1, -2 };
+    public int match = 0;
+    private int pairs = 8;
+    public bool finished=false;
     
     myControls inputActions;
 
@@ -49,11 +52,13 @@ public class MatchingGame : MonoBehaviour
             {
                 yPosition = 16f;
                 zPosition = 19f;
-            }
-
-           
+            }    
         }
+
+
     }
+
+   
 
    public bool TwoCardsUp()
     {
@@ -99,6 +104,7 @@ public class MatchingGame : MonoBehaviour
             visibleFaces[0] = -1;
             visibleFaces[1] = -2;
             success = true;
+            match++;          
         }
         return success;
     }
@@ -122,9 +128,14 @@ public class MatchingGame : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
-   
-                Debug.Log("Enter the space");
-                soundAction.Invoke();
+                if (match == pairs)
+                {
+                    Debug.Log("Win");
+                    finished = true;
+                    soundAction.Invoke();
+                }
+
+                
             }
         }
 
