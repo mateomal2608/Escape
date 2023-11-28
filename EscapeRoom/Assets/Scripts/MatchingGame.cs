@@ -8,15 +8,111 @@ public class MatchingGame : MonoBehaviour
 
     public GameObject podiumScreen;
     public UnityEvent soundAction;
-    public GameObject[] cardLeft;
-    public GameObject[] cardRight;
-    public int counter;
-
-
+    public GameObject token;
+    List<int> faceIndexes =  new List<int> { 0, 1, 2, 3, 4 , 5, 6, 7 ,0, 1, 2, 3, 4, 5, 6, 7 };
+    public static System.Random rnd = new System.Random();
+    private int shuffleNum = 0;
+    int[] visibleFaces = { -1, -2 };
+    
     myControls inputActions;
 
+   
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        float yPosition = 22f;
+        float zPosition = 19f;
+
+        for(int i = 0; i< 16;i++)
+        {
+            shuffleNum = rnd.Next(0, faceIndexes.Count);
+            var rotation = Quaternion.Euler(0f, -90f, 0f);
+            var temp = Instantiate(token, new Vector3(-45f, yPosition, zPosition), rotation);
+            temp.GetComponent<CardsAnimals>().faceIndex = faceIndexes[shuffleNum];
+            faceIndexes.Remove(faceIndexes[shuffleNum]);
+            
+
+            zPosition = zPosition + 2;
+
+            if(i==3)
+            {
+                yPosition = 20f;
+                zPosition = 19f;
+            }
+            if(i==7)
+            {
+                yPosition = 18f;
+                zPosition = 19f;
+            }
+            if(i==11)
+            {
+                yPosition = 16f;
+                zPosition = 19f;
+            }
+
+           
+        }
+    }
+
+   public bool TwoCardsUp()
+    {
+        bool cardsUp = false;
+        if (visibleFaces[0] >=0 && visibleFaces[1]>=0)
+        {
+            cardsUp = true;
+        }
+        return cardsUp;
+    }
+
+    public void AddVisibleFace(int index)
+    {
+        if (visibleFaces[0] == -1)
+        {
+            visibleFaces[0] = index;
+        }
+        else if (visibleFaces[1] == -2)
+        {
+            visibleFaces[1] = index;
+        }
+
+    }
+
+    public void RemoveVisibleFace(int index)
+    {
+        if (visibleFaces[0] == index)
+        {
+            visibleFaces[0] = -1;
+        }
+        else if (visibleFaces[1] == index)
+        {
+            visibleFaces[1] = -2;
+        }
+    }
+
+
+    public bool CheckMatch()
+    {
+        bool success = false;
+        if (visibleFaces[0] == visibleFaces[1])
+        {
+            visibleFaces[0] = -1;
+            visibleFaces[1] = -2;
+            success = true;
+        }
+        return success;
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
     private void Awake()
     {
+        token = GameObject.Find("Token");
         inputActions = new myControls();
     }
 
@@ -26,52 +122,13 @@ public class MatchingGame : MonoBehaviour
         {
             if (inputActions.Player.ActionKey.WasPerformedThisFrame())
             {
+   
                 Debug.Log("Enter the space");
                 soundAction.Invoke();
             }
         }
 
     }
-
-    public void pairs()
-    {
-        counter++;
-
-        if(counter%2==0)
-        {
-            if (!cardLeft[0].activeInHierarchy && !cardRight[3].activeInHierarchy)
-            {
-                Debug.Log("Hola");
-
-            }
-
-            else if (!cardLeft[1].activeInHierarchy && !cardRight[7].activeInHierarchy)
-            {
-                Debug.Log("HolaX2");
-            }
-
-            else
-            {
-                foreach (GameObject card in cardLeft)
-                {
-                    card.SetActive(true);
-                }
-                foreach (GameObject card in cardRight)
-                {
-                    card.SetActive(true);
-                }
-            }
-        }
-
-       
-        //else 
-        //{
-        //    
-        //}
-        
-    }
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -92,18 +149,6 @@ public class MatchingGame : MonoBehaviour
             LeanTween.scale(podiumScreen, Vector3.zero, 2).setEaseInQuad();
 
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void OnEnable()
