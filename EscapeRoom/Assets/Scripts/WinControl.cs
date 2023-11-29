@@ -12,6 +12,7 @@ public class WinControl : MonoBehaviour
     public GameObject matching;
     public GameObject statues;
     public TMP_Text[] instructions;
+    
 
 
     private void Awake()
